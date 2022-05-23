@@ -139,7 +139,12 @@ const SonInfo = ({ route, navigation }) => {
                                         padding: 10,
                                         elevation: 0, backgroundColor: "#0DAE9F"
                                     }}
-                                    onPress={() => setModalVisible(!modalVisible)}
+                                    onPress={() => {
+                                        setModalVisible(!modalVisible)
+                                        
+                                    
+                                    }
+                                    }
                                 >
                                     <Text style={{
                                         color: "white",

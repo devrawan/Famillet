@@ -45,6 +45,7 @@ const LoginScreen = ({navigation}) => {
        <TextInput 
        onChangeText={setpassword}
        value={password}
+       secureTextEntry = {true}
        style={styles.TextFieldStyle} 
        placeholder= " Enter your password"/>
 
@@ -53,10 +54,9 @@ const LoginScreen = ({navigation}) => {
       Forgot your password 
       </Text>
 
- <TouchableOpacity 
+ <TouchableOpacity  
+  style={{height:55,backgroundColor:'#0DAE9F',justifyContent:'center',marginVertical:40,width:230,marginLeft:55,borderRadius:20}}
 
- style={{height:55,backgroundColor:'#0DAE9F',justifyContent:'center',marginVertical:40,width:230,marginLeft:55,borderRadius:8}}>
- <Button
   onPress={()=>{
     var isFound = false;
     for(let i=0; i<Users.length-1 ; i++){
@@ -78,8 +78,10 @@ const LoginScreen = ({navigation}) => {
       {createTwoButtonAlert()}
     }
 
-   }}
- title='Login' color="white"/>
+   }}>
+ <Text   style={{backgroundColor:'#0DAE9F', fontWeight:"bold", textAlign: 'center',textAlignVertical: "center", borderRadius:20, color:"#fff", height:"100%",  width:"100%", justifyContent:'center'}}
+>LOGIN</Text>
+
  </TouchableOpacity>
 
  <View style={{flexDirection:'row',justifyContent:'center',marginHorizontal:10,marginTop:90}}>

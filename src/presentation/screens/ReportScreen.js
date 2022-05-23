@@ -1,4 +1,5 @@
-import React from 'react';
+import React,{useRef,useState} from 'react';
+
 import { SafeAreaView,Text,Button,Image,StyleSheet,View,TouchableOpacity,FlatList} from 'react-native';
 import IconAntDesign from 'react-native-vector-icons/AntDesign'
 import IconEntypo from 'react-native-vector-icons/Entypo'
@@ -10,8 +11,16 @@ import ObjBox from '../components/ObjBox';
 import Categories from '../../Data/Categories';
 import Users from '../../Data/Users';
 import placeholder from '../../assets/placeholder.png'
+import SonsArray from '../../Data/SonsArray';
 
 const ReportScreen = ({navigation}) => {
+  const [currentSon , setCurrentSon] = useState(0);
+
+  // const handleChoosePhoto = (index) => {
+  //   setCurrentSon(index);
+  // }
+
+  
     return (
         <SafeAreaView style={{ flex: 1, backgroundColor: '#FFFF' }}>
 
@@ -35,14 +44,16 @@ const ReportScreen = ({navigation}) => {
   
   
   
-        <View style={{ height: '100%', flexDirection: 'column', backgroundColor: '#F6F6F6' }}>
-          <View style={{ backgroundColor:'#F6F6F6',width: '100%', height: '79%', paddingHorizontal: 20, paddingVertical: 25 }}>
+        <View style={{ height: '100%', backgroundColor:"#456", flexDirection: 'column', backgroundColor: '#F6F6F6' }}>
+          <View style={{  backgroundColor:'#F6F6F6', width: '100%',  paddingHorizontal: 20, paddingVertical: 25 }}>
                <FlatList 
           horizontal
           showsHorizontalScrollIndicator ={false}
-          data={Expenses}
-          renderItem={({item})=>(
-            <TouchableOpacity >
+          data={SonsArray}
+          renderItem={({item, index})=>(
+            <TouchableOpacity   onPress={ () => { 
+              setCurrentSon(index);
+            }}>
            
             <View style={{marginVertical:10,marginHorizontal:10,backgroundColor:'#FFFF',width:90,height:90,flexDirection:'column',justifyContent:'center',alignItems:'center',borderRadius:10,shadowColor: '#0000000F',
         shadowOffset:
@@ -51,18 +62,20 @@ const ReportScreen = ({navigation}) => {
           height: 3
         }, shadowRadius: 5, shadowOpacity: 1.0}}>
           <Image source={placeholder} style={{borderWidth:1,borderColor:'#C8C8C8',justifyContent:'center',width:60,height:60,borderRadius:50}}/>
-         <Text style={{fontSize:12,paddingVertical:0}}>kk</Text>
+         <Text style={{fontSize:12,paddingVertical:0}}> {item.name}</Text>
       </View>
             </TouchableOpacity>
            
           )}
           />
+
 <FlatList 
           numColumns={1}
           showsVerticalScrollIndicator ={false}
-          data={Users}
-          renderItem={({item})=>(
-           <ObjBox />
+          data={SonsArray[currentSon].boxs}
+          renderItem={({item })=>(
+            
+           <ObjBox color = { item.color}  rate = {item.rate } price = {item.price} value = {item.name}/>
    
            
           )}

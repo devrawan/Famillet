@@ -26,7 +26,7 @@ const ObjBox = (props) => {
           
           />
               </View>
-              <Text style={{fontSize:20,color:`${props.color}`}}>{`${props.value} $`}</Text>
+              <Text style={{fontSize:20,color:`${props.color}`}}>{`${props.value} `}</Text>
               </View>
 
 

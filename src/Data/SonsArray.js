@@ -7,7 +7,30 @@ export default SonsArray =[
         gender:"female",
         country:"palestine",
          city:"gaza",
-         balance:"500"
+         balance:"500",
+         boxs : [
+             {
+                 name  : "Car ",
+                 balance : 100,
+                 rate: 4.5,
+                 color : "#456"
+             },
+
+             {
+                name  : "Book ",
+                balance : 150,
+                rate: 3.5,
+                color : "#456"
+            },
+            
+            {
+                name  : "Watch ",
+                balance : 40,
+                rate: 2.5,
+                color : "#456"
+            },
+            
+         ]
         } ,
         {
         key:"1",
@@ -17,7 +40,16 @@ export default SonsArray =[
         gender:"female",
         country:"palestine",
          city:"gaza",
-         balance:"500"
+         balance:"500",
+         boxs : [
+            {
+                name  : "Car ",
+                balance : 100,
+                rate: 4.5,
+                color : "#456"
+            }
+           
+        ]
         },
         {
         key:"2",
@@ -27,6 +59,24 @@ export default SonsArray =[
         gender:"female",
         country:"palestine",
          city:"gaza",
-         balance:"500"
+         balance:"500",
+         boxs : [
+            {
+                name  : "Car ",
+                balance : 100,
+                rate: 4.5,
+                color : "#456"
+            },
+
+           
+           
+           {
+               name  : "Watch ",
+               balance : 40,
+               rate: 2.5,
+               color : "#456"
+           },
+           
+        ]
         }
 ];
