@@ -7,7 +7,8 @@ export default Users =[
         gender:"female",
         country:"palestine",
          city:"gaza",
-         balance:"500"
+         balance:"500",
+         uri:""
         } ,
         {
         key:"1",
@@ -17,7 +18,8 @@ export default Users =[
         gender:"female",
         country:"palestine",
          city:"gaza",
-         balance:"500"
+         balance:"500",
+         uri:""
         },
         {
         key:"2",
@@ -27,7 +29,8 @@ export default Users =[
         gender:"female",
         country:"palestine",
          city:"gaza",
-         balance:"500"
+         balance:"500",
+         uri:""
         }
 ];
 
@@ -40,7 +43,7 @@ export default Users =[
      {"balance": "500", "city": "gaza", "country": "palestine", "email": "ali@gmail.com", "gender": "female", "key": "2", "name": "ali", "password": "123"},
 
 
-     
+
       {"balance": "0.0", "city": [[Object], [Object], [Object]], "country": null, "email": "Addsfds@gmail.com", "gender": "Male", "key": "986", "name": "Ahmed", "password": "Asdasf"}]
 
 */

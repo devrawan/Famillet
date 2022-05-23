@@ -22,12 +22,10 @@ import Tabs from '../../routes/Tabs';
 import SonInfo from './SonInfo';
 
 const HomeScreen = (  { route ,navigation } ) => {
-
-  //  const { user } = route.params;
-  //  const { user } = props;
   const [categories,setCategories]=useState([Categories]);
   const [modalVisible, setModalVisible] = useState(false);
-
+const person = route.params.user
+console.log(person)
   console.log("dddddddd");
   console.log(route.params);
   return (
@@ -44,10 +42,10 @@ const HomeScreen = (  { route ,navigation } ) => {
           <Image  source={placeholder}/>
         </View>
         <View style={{ width: "100%", flexDirection: 'row', justifyContent: 'center',marginBottom:3 }}>
-          <Text style={{ color: '#FFFF', fontSize: 18 }}> Ola Ahmed Ali  </Text>
+          <Text style={{ color: '#FFFF', fontSize: 18 }}> {person.name} </Text>
         </View>
         <View style={{ width: "100%", flexDirection: 'row', justifyContent: 'center', marginVertical: 2 }}>
-          <Text style={{ color: '#FFFF', fontSize: 18 }}>Current Balance $100,000 </Text>
+          <Text style={{ color: '#FFFF', fontSize: 18 }}>{` Current Balance ${person.balance}$`}  </Text>
         </View>
       </ImageBackground>
 
@@ -84,7 +82,7 @@ const HomeScreen = (  { route ,navigation } ) => {
 const Stackk = createNativeStackNavigator();
 const HomeStack =({route , navigation }) => {
   const { user} = route.params;
-  
+
     return (
     <Stackk.Navigator>
     <Stackk.Screen name="HomeScreen" initialParams={{ user: user }} component={HomeScreen} options={{headerShown:false}} />
