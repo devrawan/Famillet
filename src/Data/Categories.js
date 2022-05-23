@@ -2,35 +2,38 @@
 export default Categories =[
     { 
         key:"0",
-        name:"Sons "
+        name:"Sons ",
+        screen:"SonsScreen"
         } ,
         {
         key:"1",
-        name:"Income"
+        name:"Income",
+        screen:"IncomeScreen"
         },
         {
         key:"2",
-        name:"Expenses"
+        name:"Expenses",
+        screen:"ExpensesScreen"
         },
         {
         key:"3",
-        name:"Objectives"
+        name:"Objectives",
+        screen:"ObjectivesScreen"
         },
         {
         key :"4",
-        name:"Saving"
+        name:"Saving",
+        screen:"SavingScreen"
         },
         {
         key:"5",
-        name:"commitments"
+        name:"Commitments",
+        screen:"CommitmentsScreen"
         },
         {
         key:"6",
-        name:"Debts"
-        },
-        {
-        key:"7",
-        name:"Debts"
+        name:"Debts",
+        screen:"DebtsScreen"
         }
 ];
 

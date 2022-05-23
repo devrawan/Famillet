@@ -1,19 +1,52 @@
-import React from 'react';
-import { SafeAreaView,Text,Button,Image,StyleSheet,View,TouchableOpacity,TextInput} from 'react-native';
+import React,{useState} from 'react';
+import { SafeAreaView,Alert,ImageBackground,Text,Button,Image,StyleSheet,View,TouchableOpacity,TextInput} from 'react-native';
 //import TextField from '../components/TextField'
+import background from '../../assets/background.png'
+import Login_logo from '../../assets/Login_logo.png'
+import Users from '../../Data/Users'
 const LoginScreen = ({navigation}) => {
+
+  const[email,setEmail] =useState('ola@gmail.com')
+  const [password,setpassword] =useState('123')
+  // const[users,setUsers] = useState([Users])
+
+  const createTwoButtonAlert = () =>
+    Alert.alert(
+      "User Not Found ",
+      
+      [
+        {
+          text: "Cancel",
+          onPress: () => console.log("Cancel Pressed"),
+          style: "cancel"
+        },
+        { text: "OK", onPress: () => console.log("OK Pressed") }
+      ]
+    );
+
     return (
         <SafeAreaView style={{ height: '100%', width: '100%', backgroundColor: '#0DAE9F' }}>
 
 
-        <View style={{ backgroundColor: '#0DAE9F', height: '27%', flexDirection: 'column', justifyContent: 'center', alignItems: 'center' }}>
-           
-        </View>
+         {/* <View style={{  height: '27%', flexDirection: 'row' ,justifyContent:'center'}}>  */}
+           <ImageBackground   source={background}  style={{   height: 205, flexDirection: 'row' ,justifyContent:'center'}}>
+           <Image  source={Login_logo}  style={{marginTop:17}}/>
+           </ImageBackground>
+ 
+        {/* </View>  */}
 
         <View style={{ flexDirection: 'column', width: '100%', paddingHorizontal: 25,  backgroundColor: 'white', paddingTop: 10,height:'100%' }}>
               <View style={{flexDirection:'column',marginTop:50}}>
- <TextInput style={styles.TextFieldStyle} placeholder= " Enter your Gmail "/>
-       <TextInput style={styles.TextFieldStyle} placeholder= " Enter your password"/>
+            <TextInput 
+            onChangeText={setEmail}
+            value={email}
+            style={styles.TextFieldStyle}
+              placeholder= " Enter your Gmail "/>
+       <TextInput 
+       onChangeText={setpassword}
+       value={password}
+       style={styles.TextFieldStyle} 
+       placeholder= " Enter your password"/>
 
      </View>
       <Text style={{color:'#0DAE9F',marginLeft:10,fontSize:13}}>
@@ -21,9 +54,31 @@ const LoginScreen = ({navigation}) => {
       </Text>
 
  <TouchableOpacity 
+
  style={{height:55,backgroundColor:'#0DAE9F',justifyContent:'center',marginVertical:40,width:230,marginLeft:55,borderRadius:8}}>
  <Button
- onPress={()=>{navigation.navigate('RegisterScreen')}}
+  onPress={()=>{
+    var isFound = false;
+    for(let i=0; i<Users.length-1 ; i++){
+      console.log("AAAAAAA email: " + Users[i].email + " Password: "  + Users[i].password);
+      if(Users[i].email==email && Users[i].password==password){
+      //  navigation.navigate('HomeScreen' , { user : "ahmed"}) ;
+
+       navigation.navigate('HomeScreen', {
+         user : Users[i],
+    
+    
+      });
+
+      isFound = true;
+      }
+      
+    }
+    if (isFound == false){
+      {createTwoButtonAlert()}
+    }
+
+   }}
  title='Login' color="white"/>
  </TouchableOpacity>
 
@@ -52,7 +107,10 @@ const LoginScreen = ({navigation}) => {
 
 
  <View style={{flexDirection:'row',justifyContent:'center',marginVertical:10}}>
- <Text style={{color:'#0DAE9F',fontSize:13}}>Register a new account</Text>
+   <TouchableOpacity onPress={()=>{navigation.navigate("RegisterScreen")}}>
+   <Text style={{color:'#0DAE9F',fontSize:13}}>Register a new account</Text>
+
+   </TouchableOpacity>
 
  </View>
 
@@ -66,60 +124,6 @@ const LoginScreen = ({navigation}) => {
 
 
 
-//         <View style={{ backgroundColor:'white', flex: 1, flexDirection: 'column'}}>
-//     <View style={{height:'30%',backgroundColor:'#0DAE9F'}}>
-
-//     </View>
-//     <View style={{marginHorizontal:25}}>
-
-   
-//       <View style={{flexDirection:'column',marginTop:70}}>
-//       <TextInput style={styles.TextFieldStyle} placeholder= " Enter your Gmail "/>
-//       <TextInput style={styles.TextFieldStyle} placeholder= " Enter your password"/>
-
-//      </View>
-//      <Text style={{color:'#0DAE9F',marginLeft:10,fontSize:13}}>
-//      Forgot your password 
-//      </Text>
-
-// <TouchableOpacity 
-// style={{height:55,backgroundColor:'#0DAE9F',justifyContent:'center',marginVertical:40,width:230,marginLeft:55,borderRadius:8}}>
-// <Button
-// onPress={()=>{navigation.navigate('RegisterScreen')}}
-// title='Login' color="white"/>
-// </TouchableOpacity>
-
-// <View style={{flexDirection:'row',justifyContent:'center',marginHorizontal:10,marginTop:90}}>
-// <View
-//   style={{
-//       height:10,
-//    width:145,
-//     borderBottomColor: 'black',
-//     borderBottomWidth: 2,
-//   }}
-// />
-// <Text style={{fontSize:13,marginHorizontal:5,justifyContent:'flex-end'}}>OR</Text>
-// <View
-//   style={{
-//     height:10,
-//     width:145,
-//     borderBottomColor: 'black',
-//     borderBottomWidth: 2,
-//   }}
-// />
-// </View>
-
-
-
-
-
-// <View style={{flexDirection:'row',justifyContent:'center',marginVertical:10}}>
-// <Text style={{color:'#0DAE9F',fontSize:13}}>Register a new account</Text>
-
-// </View>
-
-//         </View>
-//         </View>
     );
 };
 

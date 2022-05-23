@@ -1,0 +1,32 @@
+export default Income =[
+    { 
+        key:"0",
+        name:"ola",
+        month:"January",
+        amount:"70"
+        } ,
+        {
+        key:"1",
+        name:"alaa",
+        month:"October",
+        amount:"30"
+        },
+        {
+        key:"2",
+        name:"ali",
+        month:"Aguest",
+        amount:"10"
+        },
+        {
+        key:"3",
+        name:"sara",
+        month:"May",
+        amount:"20"
+        },
+        {
+        key:"4",
+        name:"sara",
+        month:"January",
+        amount:"20"
+        }
+];
