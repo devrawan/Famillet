@@ -1,33 +1,59 @@
 import React ,{useState} from 'react';
-import { SafeAreaView, Text, Button, Image, StyleSheet, View, FlatList,TouchableOpacity } from 'react-native';
+import { SafeAreaView, ImageBackground,Text, View, FlatList,TouchableOpacity ,Image } from 'react-native';
 import IconAntDesign from 'react-native-vector-icons/AntDesign'
 import IconEntypo from 'react-native-vector-icons/Entypo'
 import Box from './../components/Box'
 import Categories from '../../Data/Categories';
 import IconFeather from 'react-native-vector-icons/Feather'
 import IconIonicons from 'react-native-vector-icons/Ionicons'
-const HomeScreen = () => {
-  const [categories,setCategories]=useState([Categories])
+import SonsScreen from './SonsScreen';
+import IncomeScreen from './IncomeScreen';
+import { NavigationContainer } from '@react-navigation/native';
+import { createNativeStackNavigator } from '@react-navigation/native-stack';
+import ObjectivesScreen from './ObjectivesScreen'
+import SavingScreen from './SavingScreen';
+import DebtsScreen from './DebtsScreen';
+import CommitmentsScreen from './CommitmentsScreen';
+import ExpensesScreen from './ExpensesScreen'
+import placeholder from '../../assets/placeholder.png'
+import background from '../../assets/background.png'
+import TimelineIcon from 'react-native-vector-icons/MaterialCommunityIcons'
+import Tabs from '../../routes/Tabs';
+import SonInfo from './SonInfo';
+
+const HomeScreen = (  { route ,navigation } ) => {
+
+  //  const { user } = route.params;
+  //  const { user } = props;
+  const [categories,setCategories]=useState([Categories]);
+  const [modalVisible, setModalVisible] = useState(false);
+
+  console.log("dddddddd");
+  console.log(route.params);
   return (
     <SafeAreaView style={{ flex:1,height: '100%', width: '100%', backgroundColor: '#0DAE9F' }}>
-      <View style={{ backgroundColor: '#0DAE9F', paddingHorizontal: 17, height: '27%', flexDirection: 'column', alignItems: 'center' }}>
-        <View style={{  marginHorizontal: 5, flexDirection: 'row', justifyContent: 'space-between', width: '100%' }}>
+      <ImageBackground source={background} style={{ backgroundColor: '#0DAE9F', paddingHorizontal: 17, height: 205, flexDirection: 'column', alignItems: 'center' }}>
+        <View style={{ marginTop:5, marginHorizontal: 5, flexDirection: 'row', justifyContent: 'space-between', width: '100%' }}>
+          <TouchableOpacity onPress={()=>{navigation.navigate('LoginScreen')}}>
           <IconAntDesign name="left" style={{ color: '#FFFF', fontSize: 22 }} />
-          <IconEntypo name="menu" style={{ color: '#FFFF', fontSize: 28 }} />
+          </TouchableOpacity>
+          
 
         </View>
-        <View style={{ marginTop: 5, marginBottom: 15, backgroundColor: '#FFFF', height: 100, width: 100, borderRadius: 120 }}></View>
-        <View style={{ width: "100%", flexDirection: 'row', justifyContent: 'center' }}>
-          <Text style={{ color: '#FFFF', fontSize: 18 }}>Ola Ahmed  </Text>
+        <View style={{ marginTop: 5, marginBottom: 15, backgroundColor: '#FFFF', height: 100, width: 100, borderRadius: 120 ,justifyContent:'center',alignItems:'center'}}>
+          <Image  source={placeholder}/>
+        </View>
+        <View style={{ width: "100%", flexDirection: 'row', justifyContent: 'center',marginBottom:3 }}>
+          <Text style={{ color: '#FFFF', fontSize: 18 }}> Ola Ahmed Ali  </Text>
         </View>
         <View style={{ width: "100%", flexDirection: 'row', justifyContent: 'center', marginVertical: 2 }}>
           <Text style={{ color: '#FFFF', fontSize: 18 }}>Current Balance $100,000 </Text>
         </View>
-      </View>
+      </ImageBackground>
 
 
-
-      <View style={{backgroundColor: '#F6F6F6',flexDirection:'column'}}>
+{/* add height  */}
+      <View style={{ height: '100%',backgroundColor: '#F6F6F6',flexDirection:'column'}}>
           
           <View style={{height:470,backgroundColor:'#F6F6F6', paddingHorizontal:25,justifyContent:'center',paddingTop:7}}>
           <FlatList 
@@ -35,29 +61,16 @@ const HomeScreen = () => {
           showsVerticalScrollIndicator ={false}
           data={Categories}
           renderItem={({item})=>(
+            <TouchableOpacity onPress={()=>{navigation.navigate(`${item.screen}`)}}>
             <Box  title={item.name}/>
+            </TouchableOpacity>
+           
           )}
           />
           </View>
-<View style={{height:'20%',backgroundColor:'#F6F6F6',justifyContent:'center'}}>
 
-<View style={{paddingHorizontal:50,paddingVertical:15,backgroundColor:'white',flexDirection:'row',justifyContent:'space-around'}}>
-          <TouchableOpacity style={{flexDirection:'column',justifyContent:'center'}}>
-           <IconEntypo name="home" style={{fontSize:22,paddingLeft:5}} />
-           <Text>Home</Text>
-           </TouchableOpacity>
-           <TouchableOpacity >
-          <View style={{ justifyContent:'center',backgroundColor:'#0DAE9F',width:45,height:45,borderRadius:50,paddingHorizontal:6}}>
-            <IconIonicons name="add" style={{fontSize:35,color:'#FFFF'}}/>
-          </View>
 
-           </TouchableOpacity>
-           <TouchableOpacity style={{flexDirection:'column',justifyContent:'center'}}>
-          <IconFeather name="trending-up" style={{fontSize:22,paddingLeft:8}}/>
-           <Text>Report</Text>
-           </TouchableOpacity>
-          </View>
-</View>
+         
         
        
       
@@ -66,9 +79,29 @@ const HomeScreen = () => {
   );
 };
 
-const styles = StyleSheet.create({
-
-})
 
 
-export default HomeScreen;
+const Stackk = createNativeStackNavigator();
+const HomeStack =({route , navigation }) => {
+  const { user} = route.params;
+  
+    return (
+    <Stackk.Navigator>
+    <Stackk.Screen name="HomeScreen" initialParams={{ user: user }} component={HomeScreen} options={{headerShown:false}} />
+      <Stackk.Screen name="SonsScreen" component={SonsScreen} options={{headerShown:false}} />
+      <Stackk.Screen name="IncomeScreen" component={IncomeScreen} options={{headerShown:false}} />
+      <Stackk.Screen name="ObjectivesScreen" component={ObjectivesScreen} options={{headerShown:false}} />
+      <Stackk.Screen name="SavingScreen" component={SavingScreen} options={{headerShown:false}} />
+      <Stackk.Screen name="DebtsScreen" component={DebtsScreen} options={{headerShown:false}} />
+      <Stackk.Screen name="CommitmentsScreen" component={CommitmentsScreen} options={{headerShown:false}} />
+      <Stackk.Screen name="ExpensesScreen" component={ExpensesScreen} options={{headerShown:false}} />
+     <Stackk.Screen name="SonInfo" component={SonInfo} options={{headerShown:false}} />
+
+    </Stackk.Navigator>
+ 
+  );
+};
+
+
+
+export default  HomeStack;
