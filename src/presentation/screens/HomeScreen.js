@@ -5,6 +5,8 @@ import IconEntypo from 'react-native-vector-icons/Entypo'
 import Box from './../components/Box'
 import Categories from '../../Data/Categories';
 import IconFeather from 'react-native-vector-icons/Feather'
+import { useIsFocused } from '@react-navigation/native';
+
 import IconIonicons from 'react-native-vector-icons/Ionicons'
 import SonsScreen from './SonsScreen';
 import IncomeScreen from './IncomeScreen';
@@ -20,21 +22,53 @@ import background from '../../assets/background.png'
 import TimelineIcon from 'react-native-vector-icons/MaterialCommunityIcons'
 import Tabs from '../../routes/Tabs';
 import SonInfo from './SonInfo';
+import {subscibeListener} from '../../Data/Help';
 
 
 const HomeScreen = (  { route ,navigation } ) => {
+
+
+
   const [categories,setCategories]=useState(Categories);
   const [modalVisible, setModalVisible] = useState(false);
 const person = route.params.user
-console.log(person)
-  console.log("dddddddd");
-  console.log(route.params);
+// console.log(person)
+//   console.log("dddddddd");
+
+//   console.log(route.params);
+//  console.log("cats333");
+//  console.log(route.params.cats);
+
+//  React.useEffect(() => {
+//   const unsubscribe = navigation.addListener('focus', () => {
+
+//     // console.log("ah,,,,ed");
+//     // setCategories([]);
+//     // var ds = Categories;
+//     // console.log("mmmm,mmmmmm");
+//     // console.log(ds);
+
+//     // setCategories(ds);
+//     // console.log("hi2");
 
 
-  // const [cats , setCats] = useState(Categories);
+//   });
+//   return unsubscribe;
+
+// }, []);
+
+
+subscibeListener(()=> {
+  console.log("$$$$$$$$$$$$ receive event");
+  console.log(route.params.cats);
+  
+  setCategories([...Categories]);
 
 
 
+});
+console.log("hi1");
+ 
   return (
 
     <>
@@ -44,7 +78,7 @@ console.log(person)
             setCategories(Categories);
           }}
         /> */}
-    <SafeAreaView style={{ flex:1,height: '100%', width: '100%', backgroundColor: '#0DAE9F' }}>
+    <SafeAreaView  key={`${Categories.length}`} style={{ flex:1,height: '100%', width: '100%', backgroundColor: '#0DAE9F' }}>
       <ImageBackground source={background} style={{ backgroundColor: '#0DAE9F', paddingHorizontal: 17, height: 205, flexDirection: 'column', alignItems: 'center' }}>
         <View style={{ marginTop:5, marginHorizontal: 5, flexDirection: 'row', justifyContent: 'space-between', width: '100%' }}>
           <TouchableOpacity onPress={()=>{navigation.navigate('LoginScreen')}}>
@@ -78,21 +112,26 @@ console.log(person)
 
 
 {/* add height  */}
-      <View style={{ height: '100%',backgroundColor: '#F6F6F6',flexDirection:'column'}}>
+      <View   style={{ height: '100%',backgroundColor: '#F6F6F6',flexDirection:'column'}}>
           
           <View style={{height:470,backgroundColor:'#F6F6F6', paddingHorizontal:25,justifyContent:'center',paddingTop:7}}>
-          <FlatList 
-          style={{ marginBottom : 100}}
-          numColumns={3}
-          showsVerticalScrollIndicator ={false}
-          data={categories}
-          renderItem={({item})=>(
-            <TouchableOpacity onPress={()=>{navigation.navigate(`${item.screen}`)}}>
-            <Box  title={item.name}/>
-            </TouchableOpacity>
-           
-          )}
-          />
+         
+                <FlatList 
+                  style={{ marginBottom : 100}}
+                  numColumns={3}
+                  showsVerticalScrollIndicator ={false}
+                  data={categories}
+                key={`${Categories.length}`}
+                  renderItem={({item})=>(
+                    <TouchableOpacity onPress={()=>{navigation.navigate(`${item.screen}`)}}>
+                    <Box  title={item.name}/>
+                    </TouchableOpacity>
+                   
+                  )}
+                  />
+      
+          
+          
           </View>
 
 
@@ -114,8 +153,8 @@ const HomeStack =({route , navigation }) => {
   const { user} = route.params;
 
     return (
-    <Stackk.Navigator>
-    <Stackk.Screen name="HomeScreen" initialParams={{ user: user }} component={HomeScreen} options={{headerShown:false}} />
+    <Stackk.Navigator key={`${Categories.length}`}>
+    <Stackk.Screen name="HomeScreen" key={`${Categories.length}`} initialParams={{ user: user  , cats: Categories}}   component={HomeScreen} options={{headerShown:false}} />
       <Stackk.Screen name="SonsScreen" component={SonsScreen} options={{headerShown:false}} />
       <Stackk.Screen name="IncomeScreen" component={IncomeScreen} options={{headerShown:false}} />
       <Stackk.Screen name="ObjectivesScreen" component={ObjectivesScreen} options={{headerShown:false}} />

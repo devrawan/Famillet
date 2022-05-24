@@ -6,8 +6,8 @@ import Login_logo from '../../assets/Login_logo.png'
 import Users from '../../Data/Users'
 const LoginScreen = ({navigation}) => {
 
-  const[email,setEmail] =useState('ola@gmail.com')
-  const [password,setpassword] =useState('123')
+  const[email,setEmail] =useState('')
+  const [password,setpassword] =useState('')
   // const[users,setUsers] = useState([Users])
 
   const createTwoButtonAlert = () =>

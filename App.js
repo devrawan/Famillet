@@ -4,6 +4,7 @@ import {
   SafeAreaView,
   StyleSheet,
   Text,
+  View
  
 } from 'react-native';
 import { NavigationContainer } from '@react-navigation/native';
@@ -18,6 +19,11 @@ import Tabs from './src/routes/Tabs';
 const App =() => {
  
  
+  const EmptyView = ({navigation})=> {
+    return (<View>
+      { navigation.navigate('HomeScreen' , {cats : Categories})}
+    </View>)
+  }
   return (
     // <NavigationContainer>
     //   <Tabs/>
@@ -29,6 +35,8 @@ const App =() => {
       <Stack.Screen name="LoginScreen" component={LoginScreen} options={{headerShown:false}} />
       <Stack.Screen name="RegisterScreen" component={RegisterScreen} options={{headerShown:false}} />
       <Stack.Screen name="HomeScreen" component={Tabs} options={{headerShown:false}} />
+      <Stack.Screen name="EmptyView" component={EmptyView} options={{headerShown:false}} />
+
       {/* <Stack.Screen name="ReportScreen" component={ReportScreen} options={{headerShown:false}} /> */}
 
     </Stack.Navigator>

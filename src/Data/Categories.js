@@ -4,7 +4,8 @@ export default Categories =[
         key:"0",
         name:"Sons ",
         screen:"SonsScreen"
-        } ,
+        } 
+        ,
         {
         key:"1",
         name:"Income",
@@ -33,6 +34,7 @@ export default Categories =[
         {
         key:"6",
         name:"Debts",
+
         screen:"DebtsScreen"
         }
 ];
