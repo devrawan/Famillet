@@ -21,14 +21,29 @@ import TimelineIcon from 'react-native-vector-icons/MaterialCommunityIcons'
 import Tabs from '../../routes/Tabs';
 import SonInfo from './SonInfo';
 
+
 const HomeScreen = (  { route ,navigation } ) => {
-  const [categories,setCategories]=useState([Categories]);
+  const [categories,setCategories]=useState(Categories);
   const [modalVisible, setModalVisible] = useState(false);
 const person = route.params.user
 console.log(person)
   console.log("dddddddd");
   console.log(route.params);
+
+
+  // const [cats , setCats] = useState(Categories);
+
+
+
   return (
+
+    <>
+   {/* <View
+          onWillFocus={() => {
+            //Call whatever logic or dispatch redux actions and update the screen!
+            setCategories(Categories);
+          }}
+        /> */}
     <SafeAreaView style={{ flex:1,height: '100%', width: '100%', backgroundColor: '#0DAE9F' }}>
       <ImageBackground source={background} style={{ backgroundColor: '#0DAE9F', paddingHorizontal: 17, height: 205, flexDirection: 'column', alignItems: 'center' }}>
         <View style={{ marginTop:5, marginHorizontal: 5, flexDirection: 'row', justifyContent: 'space-between', width: '100%' }}>
@@ -38,9 +53,21 @@ console.log(person)
           
 
         </View>
-        <View style={{ marginTop: 5, marginBottom: 15, backgroundColor: '#FFFF', height: 100, width: 100, borderRadius: 120 ,justifyContent:'center',alignItems:'center'}}>
-          <Image  source={placeholder}/>
+       
+      
+        <View style={{ marginTop: 5, marginBottom: 15, backgroundColor: '#FFFF', height: 100, width: 100, borderRadius: 120  ,justifyContent:'center',alignItems:'center'}}>
+       
+       
+          <Image 
+          style={{width:"100%" , borderRadius: 120 , height:"100%"}}
+          //  source={ {uri: "file:///data/user/0/com.famillet/cache/rn_image_picker_lib_temp_8d2777f9-e22f-4a8f-92b6-05f737a6f27e.jpg"}} 
+          //  source="file:///data/user/0/com.famillet/cache/rn_image_picker_lib_temp_8d2777f9-e22f-4a8f-92b6-05f737a6f27e.jpg"
+           source={(person.photo != null) ? { uri: person.photo } : placeholder}
+           />
+
         </View>
+
+
         <View style={{ width: "100%", flexDirection: 'row', justifyContent: 'center',marginBottom:3 }}>
           <Text style={{ color: '#FFFF', fontSize: 18 }}> {person.name} </Text>
         </View>
@@ -55,9 +82,10 @@ console.log(person)
           
           <View style={{height:470,backgroundColor:'#F6F6F6', paddingHorizontal:25,justifyContent:'center',paddingTop:7}}>
           <FlatList 
+          style={{ marginBottom : 100}}
           numColumns={3}
           showsVerticalScrollIndicator ={false}
-          data={Categories}
+          data={categories}
           renderItem={({item})=>(
             <TouchableOpacity onPress={()=>{navigation.navigate(`${item.screen}`)}}>
             <Box  title={item.name}/>
@@ -74,6 +102,8 @@ console.log(person)
       
       </View>
     </SafeAreaView>
+
+    </>
   );
 };
 

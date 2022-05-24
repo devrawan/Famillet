@@ -75,7 +75,7 @@ const ReportScreen = ({navigation}) => {
           data={SonsArray[currentSon].boxs}
           renderItem={({item })=>(
             
-           <ObjBox color = { item.color}  rate = {item.rate } price = {item.price} value = {item.name}/>
+           <ObjBox color = { item.color}   rate = {item.rate } price = {item.price} value = {item.name}/>
    
            
           )}

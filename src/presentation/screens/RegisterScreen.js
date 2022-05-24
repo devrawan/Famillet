@@ -76,7 +76,7 @@ const RegisterScreen = ({ navigation }) => {
   const renderItem = (item) => {
     return (
       <View >
-        <Text  style={{ padding:10, flex: 1, fontSize: 16 }}>{item.label}</Text>
+        <Text style={{ padding: 10, flex: 1, fontSize: 16 }}>{item.label}</Text>
         {item.value === value && (
           <AntDesign
             style={{ marginRight: 5, }}
@@ -260,25 +260,45 @@ const RegisterScreen = ({ navigation }) => {
 
 
 
+
           <TouchableOpacity
-            style={{ height: 55, backgroundColor: '#0DAE9F', justifyContent: 'center', marginVertical: 5, width: 230, marginLeft: 55, borderRadius: 8 }}>
-            <Button
-              onPress={() => {
-                Users.push({ key: "986", name: name, email: email, password: password, gender: gender, country: CValue.label, city: value.label, balance: "0.0" })
-                setUsers([Users])
-                console.log(Users)
-                navigation.navigate('HomeScreen')
-              }}
-              title='Register' color="white" />
+            style={{ height: 45, backgroundColor: '#0DAE9F', textAlign:"center", alignItems:"center", justifyContent: 'center', marginTop: 40, width: "100%", borderRadius: 20 }}
+
+            onPress={() => {
+              console.log("logo path ");
+              console.log(photo);
+              
+              var user = { key: "986", photo: photo, name: name, email: email, password: password, gender: gender, country: CValue.label, city: value.label, balance: "0.0" }
+              Users.push(user)
+              // setUsers([Users])
+              console.log(Users)
+              navigation.navigate('HomeScreen' , { user:  user})
+            }}>
+            <Text style={{ backgroundColor: '#0DAE9F', fontWeight: "bold", textAlign: 'center', textAlignVertical: "center", borderRadius: 20, color: "#fff", height: "100%", width: "100%", justifyContent: 'center' }}
+            >Register</Text>
+
           </TouchableOpacity>
 
 
-         <Button
-              onPress={() => {
-                // navigation.pop();
-                navigation.pop();
-              }}
-              title='Back' color="#0DAE9F" />
+
+          <TouchableOpacity
+            style={{ height: 45, backgroundColor: '#fff', textAlign:"center", alignItems:"center", justifyContent: 'center', marginVertical: 5, width: "100%", borderRadius: 20 }}
+
+            onPress={() => {
+              navigation.pop();
+            }}>
+            <Text style={{ backgroundColor: '#fff', borderColor:"#0DAE9F" , borderWidth:1,  fontWeight: "bold", textAlign: 'center', textAlignVertical: "center", borderRadius: 20, color: "#0DAE9F", height: "100%", width: "100%", justifyContent: 'center' }}
+            >Back</Text>
+
+          </TouchableOpacity>
+
+          {/* <Button
+
+            onPress={() => {
+              // navigation.pop();
+              navigation.pop();
+            }}
+            title='Back' color="#0DAE9F" /> */}
 
         </View>
       </KeyboardAwareScrollView>

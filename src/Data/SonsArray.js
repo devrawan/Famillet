@@ -13,21 +13,21 @@ export default SonsArray =[
                  name  : "Car ",
                  balance : 100,
                  rate: 4.5,
-                 color : "#456"
+                 color : "#455456"
              },
 
              {
                 name  : "Book ",
                 balance : 150,
                 rate: 3.5,
-                color : "#456"
+                color : "#22256"
             },
             
             {
                 name  : "Watch ",
                 balance : 40,
                 rate: 2.5,
-                color : "#456"
+                color : "#456555"
             },
             
          ]

@@ -84,12 +84,12 @@ const LoginScreen = ({navigation}) => {
 
  </TouchableOpacity>
 
- <View style={{flexDirection:'row',justifyContent:'center',marginHorizontal:10,marginTop:90}}>
+ <View style={{flexDirection:'row',justifyContent:'center',marginHorizontal:10,marginTop:0}}>
  <View
    style={{
        height:10,
     width:145,
-     borderBottomColor: 'black',
+     borderBottomColor: 'gray',
      borderBottomWidth: 2,
    }}
  />
@@ -98,7 +98,7 @@ const LoginScreen = ({navigation}) => {
    style={{
      height:10,
      width:145,
-     borderBottomColor: 'black',
+     borderBottomColor: 'gray',
      borderBottomWidth: 2,
    }}
  />
