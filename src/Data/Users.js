@@ -5,16 +5,21 @@ export default Users =[
         email:"ola@gmail.com",
         password:"123",
         gender:"female",
+        photo: "file:///data/user/0/com.famillet/cache/rn_image_picker_lib_temp_8d2777f9-e22f-4a8f-92b6-05f737a6f27e.jpg",
         country:"palestine",
          city:"gaza",
          balance:"500",
          uri:""
         } ,
+
+        
         {
         key:"1",
         name:"alaa",
         email:"alaa@gmail.com",
         password:"123",
+
+        photo: "file:///data/user/0/com.famillet/cache/rn_image_picker_lib_temp_8d2777f9-e22f-4a8f-92b6-05f737a6f27e.jpg",
         gender:"female",
         country:"palestine",
          city:"gaza",
@@ -27,6 +32,8 @@ export default Users =[
         email:"ali@gmail.com",
         password:"123",
         gender:"female",
+
+        photo: "file:///data/user/0/com.famillet/cache/rn_image_picker_lib_temp_8d2777f9-e22f-4a8f-92b6-05f737a6f27e.jpg",
         country:"palestine",
          city:"gaza",
          balance:"500",

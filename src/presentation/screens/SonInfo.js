@@ -72,18 +72,25 @@ const SonInfo = ({ route, navigation }) => {
                     </View>
 
                     
-                <View style={{ marginTop: 20, paddingHorizontal: 10, flexDirection: 'row', justifyContent: 'center', alignItems: 'center', with: '100%' }}>
-                    <TouchableOpacity
+                <View style={{ marginTop: 10, paddingHorizontal: 10, flexDirection: 'row', justifyContent: 'center', alignItems: 'center', with: '100%' }}>
+                    {/* <TouchableOpacity
                         style={{ fontSize: 10, height: 40, borderColor: '#707070', borderWidth: 1, justifyContent: 'center', marginVertical: 5, marginHorizontal: 5, width: 140, borderRadius: 8 }}>
                         <Button title={`Credit  ${balance}$`} color="#000000" />
-                    </TouchableOpacity>
-
-
-
-                    {/* <TouchableOpacity 
-                        style={{ fontSize: 10, height: 40, borderColor: '#0DAE9F', borderWidth: 1, justifyContent: 'center', marginVertical: 5, width: 110, borderRadius: 8, backgroundColor: '#0DAE9F' }}>
-                        <Button title="Add Credit" color="#FFFF" />
                     </TouchableOpacity> */}
+
+                    <View  
+  style={{height:45,backgroundColor:'#000',justifyContent:'center',marginVertical:0 , paddingHorizontal:20,  marginEnd:20, borderRadius:10}}
+
+  onPress={()=>{
+    navigation.navigate('LoginScreen')
+   }}>
+ <Text   style={{backgroundColor:'#000', fontWeight:"bold", textAlign: 'center',textAlignVertical: "center", borderRadius:20, color:"#fff", height:"100%",  width:"100%", justifyContent:'center'}}
+>{`Credit  ${balance}$`}</Text>
+
+ </View>
+
+
+
 
                     <Modal
                         animationType="slide"
