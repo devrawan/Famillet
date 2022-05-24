@@ -109,12 +109,16 @@ const RegisterScreen = ({ navigation }) => {
           <View style={styles.BoxIfo}>
             <AccountIcon name='account-circle' style={{ color: '#D2D2D2', fontSize: 25 }} />
             <TextInput onChangeText={setName}
+               autoCapitalize='none'
+
               value={name} placeholder=" Enter your user name" style={{ marginHorizontal: 10 }} />
           </View>
 
           <View style={styles.BoxIfo}>
             <EmailIcon name='email' style={{ color: '#D2D2D2', fontSize: 25 }} />
             <TextInput onChangeText={setEmail}
+               autoCapitalize='none'
+
               value={email} placeholder=" Enter your user email" style={{ marginHorizontal: 10 }} />
           </View>
 
@@ -124,6 +128,8 @@ const RegisterScreen = ({ navigation }) => {
               // secureTextEntry = {true}  
               onChangeText={setpassword}
               value={password}
+              autoCapitalize='none'
+
               placeholder=" Enter your  password" style={{ marginHorizontal: 10 }} />
           </View>
 
@@ -131,6 +137,8 @@ const RegisterScreen = ({ navigation }) => {
             <LockIcon name='lock' style={{ color: '#D2D2D2', fontSize: 25 }} />
             <TextInput
               // secureTextEntry = {true}  
+              autoCapitalize='none'
+
               onChangeText={setpassword2}
               value={password2} placeholder=" Confirm your password" style={{ marginHorizontal: 10 }} />
 
@@ -161,7 +169,7 @@ const RegisterScreen = ({ navigation }) => {
                 marginHorizontal: 3,
                 marginVertical: 5,
                 height: 50,
-                width: 160,
+                width:" 50%",
                 borderWidth: 1,
                 borderColor: '#4E4E4E',
                 borderRadius: 5,
@@ -175,7 +183,7 @@ const RegisterScreen = ({ navigation }) => {
                 shadowOpacity: 0.2,
                 shadowRadius: 1.41,
 
-                elevation: 2,
+                elevation: 0,
               }}
               placeholderStyle={{ fontSize: 16 }}
               selectedTextStyle={{ fontSize: 16 }}
@@ -206,23 +214,27 @@ const RegisterScreen = ({ navigation }) => {
 
 
             <Dropdown
+          
+
               style={{
+                marginHorizontal: 3,
                 marginVertical: 5,
                 height: 50,
-                width: 160,
+                width: "50%",
                 borderWidth: 1,
-                borderColor: '#4E4E4E',
+                borderColor: '#gray',
                 borderRadius: 12,
-                // padding: 12,
-                shadowColor: '#4E4E4E',
+          
+                padding: 12,
+                shadowColor: '#000',
                 shadowOffset: {
                   width: 0,
                   height: 1,
                 },
                 shadowOpacity: 0.2,
-                // shadowRadius: 1.41,
+                shadowRadius: 1.41,
 
-                elevation: 1,
+                elevation: 0,
               }}
               placeholderStyle={{ fontSize: 16 }}
               selectedTextStyle={{ fontSize: 16 }}
@@ -262,12 +274,12 @@ const RegisterScreen = ({ navigation }) => {
 
 
           <TouchableOpacity
-            style={{ height: 45, backgroundColor: '#0DAE9F', textAlign:"center", alignItems:"center", justifyContent: 'center', marginTop: 40, width: "100%", borderRadius: 20 }}
+            style={{ height: 45, backgroundColor: '#0DAE9F', textAlign:"center", alignItems:"center", justifyContent: 'center', marginTop: 10, width: "100%", borderRadius: 20 }}
 
             onPress={() => {
               console.log("logo path ");
               console.log(photo);
-              
+
               var user = { key: "986", photo: photo, name: name, email: email, password: password, gender: gender, country: CValue.label, city: value.label, balance: "0.0" }
               Users.push(user)
               // setUsers([Users])

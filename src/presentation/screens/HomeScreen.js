@@ -81,15 +81,15 @@ console.log("hi1");
     <SafeAreaView  key={`${Categories.length}`} style={{ flex:1,height: '100%', width: '100%', backgroundColor: '#0DAE9F' }}>
       <ImageBackground source={background} style={{ backgroundColor: '#0DAE9F', paddingHorizontal: 17, height: 205, flexDirection: 'column', alignItems: 'center' }}>
         <View style={{ marginTop:5, marginHorizontal: 5, flexDirection: 'row', justifyContent: 'space-between', width: '100%' }}>
-          <TouchableOpacity onPress={()=>{navigation.navigate('LoginScreen')}}>
+          {/* <TouchableOpacity onPress={()=>{navigation.navigate('LoginScreen')}}>
           <IconAntDesign name="left" style={{ color: '#FFFF', fontSize: 22 }} />
-          </TouchableOpacity>
+          </TouchableOpacity> */}
           
 
         </View>
        
       
-        <View style={{ marginTop: 5, marginBottom: 15, backgroundColor: '#FFFF', height: 100, width: 100, borderRadius: 120  ,justifyContent:'center',alignItems:'center'}}>
+        <View style={{ marginTop: 15, marginBottom: 15, backgroundColor: '#FFFF', height: 100, width: 100, borderRadius: 120  ,justifyContent:'center',alignItems:'center'}}>
        
        
           <Image 
@@ -112,9 +112,9 @@ console.log("hi1");
 
 
 {/* add height  */}
-      <View   style={{ height: '100%',backgroundColor: '#F6F6F6',flexDirection:'column'}}>
+      <View   style={{ height: '100%',backgroundColor: '#F6F6F6',alignItems:"center", flexDirection:'column'}}>
           
-          <View style={{height:470,backgroundColor:'#F6F6F6', paddingHorizontal:25,justifyContent:'center',paddingTop:7}}>
+          <View style={{backgroundColor:'#F6F6F6', paddingHorizontal:0,justifyContent:'center',paddingTop:7}}>
          
                 <FlatList 
                   style={{ marginBottom : 100}}

@@ -12,14 +12,16 @@ const LoginScreen = ({navigation}) => {
 
   const createTwoButtonAlert = () =>
     Alert.alert(
+      "Info ",
       "User Not Found ",
       
       [
-        {
-          text: "Cancel",
-          onPress: () => console.log("Cancel Pressed"),
-          style: "cancel"
-        },
+        // {
+        //   text: "Cancel",
+        //   onPress: () => console.log("Cancel Pressed"),
+        //   style: "cancel"
+        // },
+
         { text: "OK", onPress: () => console.log("OK Pressed") }
       ]
     );
@@ -40,11 +42,15 @@ const LoginScreen = ({navigation}) => {
             <TextInput 
             onChangeText={setEmail}
             value={email}
+            autoCapitalize='none'
+
             style={styles.TextFieldStyle}
               placeholder= " Enter your Gmail "/>
        <TextInput 
        onChangeText={setpassword}
        value={password}
+       autoCapitalize='none'
+
        secureTextEntry = {true}
        style={styles.TextFieldStyle} 
        placeholder= " Enter your password"/>
@@ -60,8 +66,7 @@ const LoginScreen = ({navigation}) => {
   onPress={()=>{
     var isFound = false;
     for(let i=0; i<Users.length-1 ; i++){
-      console.log("AAAAAAA email: " + Users[i].email + " Password: "  + Users[i].password);
-      if(Users[i].email==email && Users[i].password==password){
+      if(Users[i].email.toUpperCase() ==email.toUpperCase() && Users[i].password.toUpperCase() == password.toUpperCase()){
       //  navigation.navigate('HomeScreen' , { user : "ahmed"}) ;
 
        navigation.navigate('HomeScreen', {
